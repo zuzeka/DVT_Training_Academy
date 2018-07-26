@@ -1,0 +1,771 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DVTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AddressDetail">
+          <Key>
+            <PropertyRef Name="AddressDetailID" />
+          </Key>
+          <Property Name="AddressDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AddressID" Type="int" Nullable="false" />
+          <Property Name="AddressTypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Addresss">
+          <Key>
+            <PropertyRef Name="AddressID" />
+          </Key>
+          <Property Name="AddressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AddressLine1" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AddressLine2" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="CityID" Type="int" Nullable="false" />
+          <Property Name="ProvinceID" Type="int" Nullable="false" />
+          <Property Name="AddressTypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AddressType">
+          <Key>
+            <PropertyRef Name="AddressTypeID" />
+          </Key>
+          <Property Name="AddressTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AddressDescription" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityDescription" Type="nvarchar" MaxLength="35" Nullable="false" />
+          <Property Name="ProvinceID" Type="int" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="CourseID" />
+          </Key>
+          <Property Name="CourseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CourseName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CourseDescription" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateCreated" Type="date" Nullable="false" />
+          <Property Name="DateModified" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Delegate">
+          <Key>
+            <PropertyRef Name="DelegateID" />
+          </Key>
+          <Property Name="DelegateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PhoneNumber" Type="int" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="DietaryID" Type="int" Nullable="false" />
+          <Property Name="AddressDetailID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dietary">
+          <Key>
+            <PropertyRef Name="DietaryID" />
+          </Key>
+          <Property Name="DietaryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DietaryDescription" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Province">
+          <Key>
+            <PropertyRef Name="ProvinceID" />
+          </Key>
+          <Property Name="ProvinceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProvinceDescription" Type="nvarchar" MaxLength="35" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Registration">
+          <Key>
+            <PropertyRef Name="RegistrationID" />
+          </Key>
+          <Property Name="RegistrationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
+          <Property Name="DelegateID" Type="int" Nullable="false" />
+          <Property Name="TrainingID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Training">
+          <Key>
+            <PropertyRef Name="TrainingID" />
+          </Key>
+          <Property Name="TrainingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" Nullable="false" />
+          <Property Name="RegistrationEndDate" Type="date" Nullable="false" />
+          <Property Name="Seats" Type="int" Nullable="false" />
+          <Property Name="Venue" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cost" Type="float" Nullable="false" />
+          <Property Name="DateCreated" Type="date" Nullable="false" />
+          <Property Name="DateModified" Type="date" Nullable="false" />
+          <Property Name="TrainingPaymentID" Type="int" Nullable="false" />
+          <Property Name="CourseID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TrainingPayment">
+          <Key>
+            <PropertyRef Name="TrainingPaymentID" />
+          </Key>
+          <Property Name="TrainingPaymentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TrainingPaymentDescription" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__AddressDe__Addre__5CD6CB2B">
+          <End Role="Addresss" Type="Self.Addresss" Multiplicity="1" />
+          <End Role="AddressDetail" Type="Self.AddressDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresss">
+              <PropertyRef Name="AddressID" />
+            </Principal>
+            <Dependent Role="AddressDetail">
+              <PropertyRef Name="AddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AddressDe__Addre__5DCAEF64">
+          <End Role="AddressType" Type="Self.AddressType" Multiplicity="1" />
+          <End Role="AddressDetail" Type="Self.AddressDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AddressType">
+              <PropertyRef Name="AddressTypeID" />
+            </Principal>
+            <Dependent Role="AddressDetail">
+              <PropertyRef Name="AddressTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Addresss__Addres__5FB337D6">
+          <End Role="AddressType" Type="Self.AddressType" Multiplicity="1" />
+          <End Role="Addresss" Type="Self.Addresss" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AddressType">
+              <PropertyRef Name="AddressTypeID" />
+            </Principal>
+            <Dependent Role="Addresss">
+              <PropertyRef Name="AddressTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Addresss__Provin__5EBF139D">
+          <End Role="Province" Type="Self.Province" Multiplicity="1" />
+          <End Role="Addresss" Type="Self.Addresss" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province">
+              <PropertyRef Name="ProvinceID" />
+            </Principal>
+            <Dependent Role="Addresss">
+              <PropertyRef Name="ProvinceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__City__ProvinceID__60A75C0F">
+          <End Role="Province" Type="Self.Province" Multiplicity="0..1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province">
+              <PropertyRef Name="ProvinceID" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="ProvinceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Registrat__Train__6383C8BA">
+          <End Role="Training" Type="Self.Training" Multiplicity="1" />
+          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Training">
+              <PropertyRef Name="TrainingID" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="TrainingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Training__Course__66603565">
+          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="Training" Type="Self.Training" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="Training">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Training__Traini__656C112C">
+          <End Role="TrainingPayment" Type="Self.TrainingPayment" Multiplicity="1" />
+          <End Role="Training" Type="Self.Training" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrainingPayment">
+              <PropertyRef Name="TrainingPaymentID" />
+            </Principal>
+            <Dependent Role="Training">
+              <PropertyRef Name="TrainingPaymentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Delegate_AddressDetail">
+          <End Role="AddressDetail" Type="Self.AddressDetail" Multiplicity="1" />
+          <End Role="Delegate" Type="Self.Delegate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AddressDetail">
+              <PropertyRef Name="AddressDetailID" />
+            </Principal>
+            <Dependent Role="Delegate">
+              <PropertyRef Name="AddressDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Delegate_Dietary">
+          <End Role="Dietary" Type="Self.Dietary" Multiplicity="1" />
+          <End Role="Delegate" Type="Self.Delegate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dietary">
+              <PropertyRef Name="DietaryID" />
+            </Principal>
+            <Dependent Role="Delegate">
+              <PropertyRef Name="DietaryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registration_Delegate1">
+          <End Role="Delegate" Type="Self.Delegate" Multiplicity="1" />
+          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Delegate">
+              <PropertyRef Name="DelegateID" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="DelegateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DVTModelStoreContainer">
+          <EntitySet Name="AddressDetail" EntityType="Self.AddressDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Addresss" EntityType="Self.Addresss" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AddressType" EntityType="Self.AddressType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Delegate" EntityType="Self.Delegate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dietary" EntityType="Self.Dietary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Province" EntityType="Self.Province" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Registration" EntityType="Self.Registration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Training" EntityType="Self.Training" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrainingPayment" EntityType="Self.TrainingPayment" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__AddressDe__Addre__5CD6CB2B" Association="Self.FK__AddressDe__Addre__5CD6CB2B">
+            <End Role="Addresss" EntitySet="Addresss" />
+            <End Role="AddressDetail" EntitySet="AddressDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AddressDe__Addre__5DCAEF64" Association="Self.FK__AddressDe__Addre__5DCAEF64">
+            <End Role="AddressType" EntitySet="AddressType" />
+            <End Role="AddressDetail" EntitySet="AddressDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Addresss__Addres__5FB337D6" Association="Self.FK__Addresss__Addres__5FB337D6">
+            <End Role="AddressType" EntitySet="AddressType" />
+            <End Role="Addresss" EntitySet="Addresss" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Addresss__Provin__5EBF139D" Association="Self.FK__Addresss__Provin__5EBF139D">
+            <End Role="Province" EntitySet="Province" />
+            <End Role="Addresss" EntitySet="Addresss" />
+          </AssociationSet>
+          <AssociationSet Name="FK__City__ProvinceID__60A75C0F" Association="Self.FK__City__ProvinceID__60A75C0F">
+            <End Role="Province" EntitySet="Province" />
+            <End Role="City" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Registrat__Train__6383C8BA" Association="Self.FK__Registrat__Train__6383C8BA">
+            <End Role="Training" EntitySet="Training" />
+            <End Role="Registration" EntitySet="Registration" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Training__Course__66603565" Association="Self.FK__Training__Course__66603565">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="Training" EntitySet="Training" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Training__Traini__656C112C" Association="Self.FK__Training__Traini__656C112C">
+            <End Role="TrainingPayment" EntitySet="TrainingPayment" />
+            <End Role="Training" EntitySet="Training" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Delegate_AddressDetail" Association="Self.FK_Delegate_AddressDetail">
+            <End Role="AddressDetail" EntitySet="AddressDetail" />
+            <End Role="Delegate" EntitySet="Delegate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Delegate_Dietary" Association="Self.FK_Delegate_Dietary">
+            <End Role="Dietary" EntitySet="Dietary" />
+            <End Role="Delegate" EntitySet="Delegate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registration_Delegate1" Association="Self.FK_Registration_Delegate1">
+            <End Role="Delegate" EntitySet="Delegate" />
+            <End Role="Registration" EntitySet="Registration" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DVTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AddressDetail">
+          <Key>
+            <PropertyRef Name="AddressDetailID" />
+          </Key>
+          <Property Name="AddressDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AddressID" Type="Int32" Nullable="false" />
+          <Property Name="AddressTypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Addresss" Relationship="Self.FK__AddressDe__Addre__5CD6CB2B" FromRole="AddressDetail" ToRole="Addresss" />
+          <NavigationProperty Name="AddressType" Relationship="Self.FK__AddressDe__Addre__5DCAEF64" FromRole="AddressDetail" ToRole="AddressType" />
+          <NavigationProperty Name="Delegates" Relationship="Self.FK_Delegate_AddressDetail" FromRole="AddressDetail" ToRole="Delegate" />
+        </EntityType>
+        <EntityType Name="Addresss">
+          <Key>
+            <PropertyRef Name="AddressID" />
+          </Key>
+          <Property Name="AddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AddressLine1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AddressLine2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CityID" Type="Int32" Nullable="false" />
+          <Property Name="ProvinceID" Type="Int32" Nullable="false" />
+          <Property Name="AddressTypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AddressDetails" Relationship="Self.FK__AddressDe__Addre__5CD6CB2B" FromRole="Addresss" ToRole="AddressDetail" />
+          <NavigationProperty Name="AddressType" Relationship="Self.FK__Addresss__Addres__5FB337D6" FromRole="Addresss" ToRole="AddressType" />
+          <NavigationProperty Name="Province" Relationship="Self.FK__Addresss__Provin__5EBF139D" FromRole="Addresss" ToRole="Province" />
+        </EntityType>
+        <EntityType Name="AddressType">
+          <Key>
+            <PropertyRef Name="AddressTypeID" />
+          </Key>
+          <Property Name="AddressTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AddressDescription" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AddressDetails" Relationship="Self.FK__AddressDe__Addre__5DCAEF64" FromRole="AddressType" ToRole="AddressDetail" />
+          <NavigationProperty Name="Addressses" Relationship="Self.FK__Addresss__Addres__5FB337D6" FromRole="AddressType" ToRole="Addresss" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityDescription" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProvinceID" Type="Int32" />
+          <NavigationProperty Name="Province" Relationship="Self.FK__City__ProvinceID__60A75C0F" FromRole="City" ToRole="Province" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="CourseID" />
+          </Key>
+          <Property Name="CourseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CourseName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CourseDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateModified" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Trainings" Relationship="Self.FK__Training__Course__66603565" FromRole="Course" ToRole="Training" />
+        </EntityType>
+        <EntityType Name="Delegate">
+          <Key>
+            <PropertyRef Name="DelegateID" />
+          </Key>
+          <Property Name="DelegateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneNumber" Type="Int32" />
+          <Property Name="CompanyName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DietaryID" Type="Int32" Nullable="false" />
+          <Property Name="AddressDetailID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AddressDetail" Relationship="Self.FK_Delegate_AddressDetail" FromRole="Delegate" ToRole="AddressDetail" />
+          <NavigationProperty Name="Dietary" Relationship="Self.FK_Delegate_Dietary" FromRole="Delegate" ToRole="Dietary" />
+          <NavigationProperty Name="Registrations" Relationship="Self.FK_Registration_Delegate1" FromRole="Delegate" ToRole="Registration" />
+        </EntityType>
+        <EntityType Name="Dietary">
+          <Key>
+            <PropertyRef Name="DietaryID" />
+          </Key>
+          <Property Name="DietaryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DietaryDescription" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Delegates" Relationship="Self.FK_Delegate_Dietary" FromRole="Dietary" ToRole="Delegate" />
+        </EntityType>
+        <EntityType Name="Province">
+          <Key>
+            <PropertyRef Name="ProvinceID" />
+          </Key>
+          <Property Name="ProvinceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProvinceDescription" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Addressses" Relationship="Self.FK__Addresss__Provin__5EBF139D" FromRole="Province" ToRole="Addresss" />
+          <NavigationProperty Name="Cities" Relationship="Self.FK__City__ProvinceID__60A75C0F" FromRole="Province" ToRole="City" />
+        </EntityType>
+        <EntityType Name="Registration">
+          <Key>
+            <PropertyRef Name="RegistrationID" />
+          </Key>
+          <Property Name="RegistrationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateModified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DelegateID" Type="Int32" Nullable="false" />
+          <Property Name="TrainingID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Delegate" Relationship="Self.FK_Registration_Delegate1" FromRole="Registration" ToRole="Delegate" />
+          <NavigationProperty Name="Training" Relationship="Self.FK__Registrat__Train__6383C8BA" FromRole="Registration" ToRole="Training" />
+        </EntityType>
+        <EntityType Name="Training">
+          <Key>
+            <PropertyRef Name="TrainingID" />
+          </Key>
+          <Property Name="TrainingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="RegistrationEndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Seats" Type="Int32" Nullable="false" />
+          <Property Name="Venue" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cost" Type="Double" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateModified" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TrainingPaymentID" Type="Int32" Nullable="false" />
+          <Property Name="CourseID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Course" Relationship="Self.FK__Training__Course__66603565" FromRole="Training" ToRole="Course" />
+          <NavigationProperty Name="Registrations" Relationship="Self.FK__Registrat__Train__6383C8BA" FromRole="Training" ToRole="Registration" />
+          <NavigationProperty Name="TrainingPayment" Relationship="Self.FK__Training__Traini__656C112C" FromRole="Training" ToRole="TrainingPayment" />
+        </EntityType>
+        <EntityType Name="TrainingPayment">
+          <Key>
+            <PropertyRef Name="TrainingPaymentID" />
+          </Key>
+          <Property Name="TrainingPaymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TrainingPaymentDescription" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Trainings" Relationship="Self.FK__Training__Traini__656C112C" FromRole="TrainingPayment" ToRole="Training" />
+        </EntityType>
+        <Association Name="FK__AddressDe__Addre__5CD6CB2B">
+          <End Role="Addresss" Type="Self.Addresss" Multiplicity="1" />
+          <End Role="AddressDetail" Type="Self.AddressDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresss">
+              <PropertyRef Name="AddressID" />
+            </Principal>
+            <Dependent Role="AddressDetail">
+              <PropertyRef Name="AddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AddressDe__Addre__5DCAEF64">
+          <End Role="AddressType" Type="Self.AddressType" Multiplicity="1" />
+          <End Role="AddressDetail" Type="Self.AddressDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AddressType">
+              <PropertyRef Name="AddressTypeID" />
+            </Principal>
+            <Dependent Role="AddressDetail">
+              <PropertyRef Name="AddressTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Delegate_AddressDetail">
+          <End Role="AddressDetail" Type="Self.AddressDetail" Multiplicity="1" />
+          <End Role="Delegate" Type="Self.Delegate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AddressDetail">
+              <PropertyRef Name="AddressDetailID" />
+            </Principal>
+            <Dependent Role="Delegate">
+              <PropertyRef Name="AddressDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Addresss__Addres__5FB337D6">
+          <End Role="AddressType" Type="Self.AddressType" Multiplicity="1" />
+          <End Role="Addresss" Type="Self.Addresss" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AddressType">
+              <PropertyRef Name="AddressTypeID" />
+            </Principal>
+            <Dependent Role="Addresss">
+              <PropertyRef Name="AddressTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Addresss__Provin__5EBF139D">
+          <End Role="Province" Type="Self.Province" Multiplicity="1" />
+          <End Role="Addresss" Type="Self.Addresss" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province">
+              <PropertyRef Name="ProvinceID" />
+            </Principal>
+            <Dependent Role="Addresss">
+              <PropertyRef Name="ProvinceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__City__ProvinceID__60A75C0F">
+          <End Role="Province" Type="Self.Province" Multiplicity="0..1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province">
+              <PropertyRef Name="ProvinceID" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="ProvinceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Training__Course__66603565">
+          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="Training" Type="Self.Training" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="Training">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Delegate_Dietary">
+          <End Role="Dietary" Type="Self.Dietary" Multiplicity="1" />
+          <End Role="Delegate" Type="Self.Delegate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dietary">
+              <PropertyRef Name="DietaryID" />
+            </Principal>
+            <Dependent Role="Delegate">
+              <PropertyRef Name="DietaryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registration_Delegate1">
+          <End Role="Delegate" Type="Self.Delegate" Multiplicity="1" />
+          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Delegate">
+              <PropertyRef Name="DelegateID" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="DelegateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Registrat__Train__6383C8BA">
+          <End Role="Training" Type="Self.Training" Multiplicity="1" />
+          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Training">
+              <PropertyRef Name="TrainingID" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="TrainingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Training__Traini__656C112C">
+          <End Role="TrainingPayment" Type="Self.TrainingPayment" Multiplicity="1" />
+          <End Role="Training" Type="Self.Training" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrainingPayment">
+              <PropertyRef Name="TrainingPaymentID" />
+            </Principal>
+            <Dependent Role="Training">
+              <PropertyRef Name="TrainingPaymentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DVTEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AddressDetails" EntityType="Self.AddressDetail" />
+          <EntitySet Name="Addressses" EntityType="Self.Addresss" />
+          <EntitySet Name="AddressTypes" EntityType="Self.AddressType" />
+          <EntitySet Name="Cities" EntityType="Self.City" />
+          <EntitySet Name="Courses" EntityType="Self.Course" />
+          <EntitySet Name="Delegates" EntityType="Self.Delegate" />
+          <EntitySet Name="Dietaries" EntityType="Self.Dietary" />
+          <EntitySet Name="Provinces" EntityType="Self.Province" />
+          <EntitySet Name="Registrations" EntityType="Self.Registration" />
+          <EntitySet Name="Trainings" EntityType="Self.Training" />
+          <EntitySet Name="TrainingPayments" EntityType="Self.TrainingPayment" />
+          <AssociationSet Name="FK__AddressDe__Addre__5CD6CB2B" Association="Self.FK__AddressDe__Addre__5CD6CB2B">
+            <End Role="Addresss" EntitySet="Addressses" />
+            <End Role="AddressDetail" EntitySet="AddressDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AddressDe__Addre__5DCAEF64" Association="Self.FK__AddressDe__Addre__5DCAEF64">
+            <End Role="AddressType" EntitySet="AddressTypes" />
+            <End Role="AddressDetail" EntitySet="AddressDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Delegate_AddressDetail" Association="Self.FK_Delegate_AddressDetail">
+            <End Role="AddressDetail" EntitySet="AddressDetails" />
+            <End Role="Delegate" EntitySet="Delegates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Addresss__Addres__5FB337D6" Association="Self.FK__Addresss__Addres__5FB337D6">
+            <End Role="AddressType" EntitySet="AddressTypes" />
+            <End Role="Addresss" EntitySet="Addressses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Addresss__Provin__5EBF139D" Association="Self.FK__Addresss__Provin__5EBF139D">
+            <End Role="Province" EntitySet="Provinces" />
+            <End Role="Addresss" EntitySet="Addressses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__City__ProvinceID__60A75C0F" Association="Self.FK__City__ProvinceID__60A75C0F">
+            <End Role="Province" EntitySet="Provinces" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Training__Course__66603565" Association="Self.FK__Training__Course__66603565">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="Training" EntitySet="Trainings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Delegate_Dietary" Association="Self.FK_Delegate_Dietary">
+            <End Role="Dietary" EntitySet="Dietaries" />
+            <End Role="Delegate" EntitySet="Delegates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registration_Delegate1" Association="Self.FK_Registration_Delegate1">
+            <End Role="Delegate" EntitySet="Delegates" />
+            <End Role="Registration" EntitySet="Registrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Registrat__Train__6383C8BA" Association="Self.FK__Registrat__Train__6383C8BA">
+            <End Role="Training" EntitySet="Trainings" />
+            <End Role="Registration" EntitySet="Registrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Training__Traini__656C112C" Association="Self.FK__Training__Traini__656C112C">
+            <End Role="TrainingPayment" EntitySet="TrainingPayments" />
+            <End Role="Training" EntitySet="Trainings" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DVTModelStoreContainer" CdmEntityContainer="DVTEntities">
+          <EntitySetMapping Name="AddressDetails">
+            <EntityTypeMapping TypeName="DVTModel.AddressDetail">
+              <MappingFragment StoreEntitySet="AddressDetail">
+                <ScalarProperty Name="AddressDetailID" ColumnName="AddressDetailID" />
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="AddressTypeID" ColumnName="AddressTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Addressses">
+            <EntityTypeMapping TypeName="DVTModel.Addresss">
+              <MappingFragment StoreEntitySet="Addresss">
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+                <ScalarProperty Name="AddressTypeID" ColumnName="AddressTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AddressTypes">
+            <EntityTypeMapping TypeName="DVTModel.AddressType">
+              <MappingFragment StoreEntitySet="AddressType">
+                <ScalarProperty Name="AddressTypeID" ColumnName="AddressTypeID" />
+                <ScalarProperty Name="AddressDescription" ColumnName="AddressDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="DVTModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="CityDescription" ColumnName="CityDescription" />
+                <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="DVTModel.Course">
+              <MappingFragment StoreEntitySet="Course">
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="CourseCode" ColumnName="CourseCode" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="CourseDescription" ColumnName="CourseDescription" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Delegates">
+            <EntityTypeMapping TypeName="DVTModel.Delegate">
+              <MappingFragment StoreEntitySet="Delegate">
+                <ScalarProperty Name="DelegateID" ColumnName="DelegateID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="DietaryID" ColumnName="DietaryID" />
+                <ScalarProperty Name="AddressDetailID" ColumnName="AddressDetailID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dietaries">
+            <EntityTypeMapping TypeName="DVTModel.Dietary">
+              <MappingFragment StoreEntitySet="Dietary">
+                <ScalarProperty Name="DietaryID" ColumnName="DietaryID" />
+                <ScalarProperty Name="DietaryDescription" ColumnName="DietaryDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provinces">
+            <EntityTypeMapping TypeName="DVTModel.Province">
+              <MappingFragment StoreEntitySet="Province">
+                <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+                <ScalarProperty Name="ProvinceDescription" ColumnName="ProvinceDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Registrations">
+            <EntityTypeMapping TypeName="DVTModel.Registration">
+              <MappingFragment StoreEntitySet="Registration">
+                <ScalarProperty Name="RegistrationID" ColumnName="RegistrationID" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="DelegateID" ColumnName="DelegateID" />
+                <ScalarProperty Name="TrainingID" ColumnName="TrainingID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trainings">
+            <EntityTypeMapping TypeName="DVTModel.Training">
+              <MappingFragment StoreEntitySet="Training">
+                <ScalarProperty Name="TrainingID" ColumnName="TrainingID" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="RegistrationEndDate" ColumnName="RegistrationEndDate" />
+                <ScalarProperty Name="Seats" ColumnName="Seats" />
+                <ScalarProperty Name="Venue" ColumnName="Venue" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="TrainingPaymentID" ColumnName="TrainingPaymentID" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrainingPayments">
+            <EntityTypeMapping TypeName="DVTModel.TrainingPayment">
+              <MappingFragment StoreEntitySet="TrainingPayment">
+                <ScalarProperty Name="TrainingPaymentID" ColumnName="TrainingPaymentID" />
+                <ScalarProperty Name="TrainingPaymentDescription" ColumnName="TrainingPaymentDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
