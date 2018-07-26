@@ -44,6 +44,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
@@ -131,6 +137,10 @@
     <ProjectReference Include="..\TrainingAcademy.BL\TrainingAcademy.BL.csproj">
       <Project>{DA35A768-07E8-4F9B-9E60-D2618A36E81D}</Project>
       <Name>TrainingAcademy.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TrainingAcademy.DAL\TrainingAcademy.DAL.csproj">
+      <Project>{F518B53A-5ACA-496C-A055-2F8A8A3220A2}</Project>
+      <Name>TrainingAcademy.DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
