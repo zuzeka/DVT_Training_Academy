@@ -33,7 +33,7 @@ namespace TrainingAcademy.BL.Concrete
         public void Delete(int id)
         {
             DAL.Training train = getById(id);
-            _db.Trainings.Remove(train);
+            //_db.Trainings.Remove(train);
         }
 
         public void Update(DAL.Training training)
