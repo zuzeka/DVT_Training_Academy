@@ -8,7 +8,7 @@ using TrainingAcademy.DAL;
 
 namespace TrainingAcademy.BL.Concrete
 {
-   public class CourseRepository : ICourse
+    public class CourseRepository : ICourse
     {
         DVTEntities _context;
         public CourseRepository(DVTEntities Context)
@@ -29,12 +29,16 @@ namespace TrainingAcademy.BL.Concrete
         {
             return _context.Courses.ToList();
         }
-       
+
 
         public void RemoveCourse(int id)
         {
-            Course entity = EditCourse(id);
-            _context.Courses.Remove(entity);
+            Course entity = _context.Courses.FirstOrDefault(x => x.CourseID == id);
+
+            if (entity != null)
+                _context.Courses.Remove(entity);
+            else
+                throw new Exception("Course not found");
         }
         public void Comit()
         {
@@ -43,7 +47,7 @@ namespace TrainingAcademy.BL.Concrete
 
         public Course GetCoursebyid(int id)
         {
-          return  _context.Courses.Find(id);
+            return _context.Courses.Find(id);
         }
     }
 }
