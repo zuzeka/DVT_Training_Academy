@@ -16,13 +16,13 @@ namespace TrainingAcademy.BL.Concrete
             _db = dVTEntities;
         }
 
-        public IEnumerable<DAL.Training> GetTrainings()
+        public IEnumerable<DAL.Training> GetAll()
         {
             return _db.Trainings.ToList();
         }
-        public void Create()
+        public void Insert(DAL.Training training)
         {
-            //_db.Trainings.Add(training);
+            _db.Trainings.Add(training);
         }
 
         public void Save()
