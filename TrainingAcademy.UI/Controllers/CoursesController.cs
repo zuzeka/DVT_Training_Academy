@@ -4,58 +4,46 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TrainingAcademy.BL.Abstract;
-using TrainingAcademy.DAL;
 
 namespace TrainingAcademy.UI.Controllers
 {
-    public class CourseController : Controller
+    public class CoursesController : Controller
     {
-        private ICourse _ICourse;
-        public CourseController(ICourse _iCourse)
+        ICourse _ICourse;
+        
+        public CoursesController(ICourse _iCourse)
         {
             //inject implement dependecy Injection here.
             _ICourse = _iCourse;
 
         }
 
-        // GET: Course/ List Courses
+        // GET: Courses
         public ActionResult Index()
         {
-            
             return View(_ICourse.GetCourses());
         }
 
-        // GET: Course/Create, a course
+        // GET: Courses/Details/5
+        public ActionResult Details(int id)
+        {
+            return View();
+        }
+
+        // GET: Courses/Create
         public ActionResult Create()
         {
-            
             return View();
         }
 
+        // POST: Courses/Create
         [HttpPost]
-        public ActionResult Create(Course course)
-        {
-            _ICourse.AddCourse(course);
-            _ICourse.Comit();
-            return View();
-        }
-
-        // GET: Course/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View(_ICourse.GetCoursebyid(id));
-        }
-
-        // POST: Course/Edit/5
-        [HttpPost]
-        public ActionResult Edit()
+        public ActionResult Create(FormCollection collection)
         {
             try
             {
+                // TODO: Add insert logic here
 
-
-                //_ICourse.EditCourse();
-                //_ICourse.Comit();
                 return RedirectToAction("Index");
             }
             catch
@@ -64,13 +52,35 @@ namespace TrainingAcademy.UI.Controllers
             }
         }
 
-        // GET: Course/Delete/5
+        // GET: Courses/Edit/5
+        public ActionResult Edit(int id)
+        {
+            return View();
+        }
+
+        // POST: Courses/Edit/5
+        [HttpPost]
+        public ActionResult Edit(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add update logic here
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: Courses/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Course/Delete/5
+        // POST: Courses/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
