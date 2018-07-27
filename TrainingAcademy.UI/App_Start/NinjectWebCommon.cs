@@ -12,6 +12,7 @@ namespace TrainingAcademy.UI.App_Start
     using Ninject.Web.Common;
     using TrainingAcademy.BL.Abstract;
     using TrainingAcademy.BL.Concrete;
+    using TrainingAcademy.DAL;
 
     public static class NinjectWebCommon 
     {
@@ -71,6 +72,7 @@ namespace TrainingAcademy.UI.App_Start
         {
             kernel.Bind<IDelegate>().To<BL.Concrete.Delegate>();
             kernel.Bind<IRegister>().To<BL.Concrete.Register>();
+            kernel.Bind<ITraining>().To<BL.Concrete.Training>();
         }        
     }
 }
