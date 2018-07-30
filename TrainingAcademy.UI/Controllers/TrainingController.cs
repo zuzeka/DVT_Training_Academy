@@ -27,6 +27,8 @@ namespace TrainingAcademy.UI.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.TrainingPaymentID = new SelectList(_training.GetPaymentDesc(), "TrainingPaymentID", "TrainingPaymentDescription");
+            ViewBag.CourseID = new SelectList(_training.GetCourse(), "CourseID", "CourseCode");
             return View();
         }
 
@@ -44,32 +46,45 @@ namespace TrainingAcademy.UI.Controllers
             return View();
         }
 
-        //public ActionResult Delete(int id)
-        //{
-        //    _training.Delete(id);
-        //    return View();
-        //}
-        // GET: /Movies/Delete/5
         public ActionResult Delete(int id)
         {
-            id = 1;
-            if (ModelState.IsValid)
-            {
-                _training.Delete(id);
-            }
-            return View();
+            return View(_training.getById(id));
         }
 
-        //// POST: /Movies/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    Movie movie = db.Movies.Find(id);
-        //    db.Movies.Remove(movie);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
+        // POST: Trainings/Delete/5
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            _training.Delete(id);
+            return RedirectToAction("Index");
+        }
 
+        // GET: Trainings/Edit/5
+        public ActionResult Update(int id)
+        {
+            ViewBag.TrainingPaymentID = new SelectList(_training.GetPaymentDesc(), "TrainingPaymentID", "TrainingPaymentDescription", _training.CurrentTrainingPaymentID(id));
+            ViewBag.CourseID = new SelectList(_training.GetCourse(), "CourseID", "CourseCode", _training.CurrentCourseID(id));
+            
+            return View(_training.getById(id));
+        }
+
+        // POST: Trainings/Edit/5
+        [HttpPost]
+        public ActionResult Update(DAL.Training training)
+        {
+            ViewBag.TrainingPaymentID = new SelectList(_training.GetPaymentDesc(), "TrainingPaymentID", "TrainingPaymentDescription", _training.UpdateTrainingPaymentID(training));
+            ViewBag.CourseID = new SelectList(_training.GetCourse(), "CourseID", "CourseCode", _training.UpdateCourseID(training));
+            _training.Update(training);
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Details(int id)
+        {
+            ViewBag.TrainingPaymentID = new SelectList(_training.GetPaymentDesc(), "TrainingPaymentID", "TrainingPaymentDescription", _training.CurrentTrainingPaymentID(id));
+            ViewBag.CourseID = new SelectList(_training.GetCourse(), "CourseID", "CourseCode", _training.CurrentCourseID(id));
+
+            return View(_training.getById(id));
+        }
     }
 }

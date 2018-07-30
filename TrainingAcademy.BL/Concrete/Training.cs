@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,8 @@ namespace TrainingAcademy.BL.Concrete
         public void Insert(DAL.Training training)
         {
             _db.Trainings.Add(training);
+            _db.SaveChanges();
+            
         }
 
         public void Save()
@@ -32,21 +35,55 @@ namespace TrainingAcademy.BL.Concrete
 
         public void Delete(int id)
         {
-            DAL.Training train = getById(id);
-            //_db.Trainings.Remove(train);
+            if (id < 1)
+            {
+                throw new Exception("The record you trying to deleted is not available");
+            }
+            else
+            {
+                DAL.Training training = _db.Trainings.Find(id);
+                _db.Trainings.Remove(training);
+                _db.SaveChanges();
+            }
         }
-
-        public void Update(DAL.Training training)
-        {
-            int id = training.TrainingID;
-            training = getById(id);
-
-            _db.Trainings.Add(training);
-        }
+        
 
         public DAL.Training getById(int id)
         {
-            return _db.Trainings.Where(x => x.TrainingID == id).SingleOrDefault();
+            return _db.Trainings.Find(id);
+        }
+        public void Update(DAL.Training training)
+        {
+            _db.Entry(training).State = EntityState.Modified;
+            _db.SaveChanges();
+        }
+
+        public List<DAL.TrainingPayment> GetPaymentDesc()
+        {
+            return _db.TrainingPayments.ToList();
+        }
+        public List<DAL.Course> GetCourse()
+        {
+            return _db.Courses.ToList();
+        }
+        public int CurrentCourseID(int id)
+        {
+            DAL.Training training = _db.Trainings.Find(id);
+            return training.CourseID;
+        }
+        public int CurrentTrainingPaymentID(int id)
+        {
+            DAL.Training training = _db.Trainings.Find(id);
+            return training.TrainingPaymentID;
+        }
+
+        public int UpdateCourseID(DAL.Training training)
+        {
+            return training.CourseID;
+        }
+        public int UpdateTrainingPaymentID(DAL.Training training)
+        {
+            return training.TrainingPaymentID;
         }
     }
 }

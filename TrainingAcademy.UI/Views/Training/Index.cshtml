@@ -7,7 +7,8 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create") |
+    @Html.ActionLink("Register", "Register")
 </p>
 <table class="table">
     <tr>
@@ -36,10 +37,10 @@
             @Html.DisplayNameFor(model => model.DateModified)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TrainingPaymentID)
+            @Html.DisplayNameFor(model => model.TrainingPayment.TrainingPaymentDescription)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CourseID)
+            @Html.DisplayNameFor(model => model.Course.CourseCode)
         </th>
         <th></th>
     </tr>
@@ -71,13 +72,13 @@
             @Html.DisplayFor(modelItem => item.DateModified)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TrainingPaymentID)
+            @Html.DisplayFor(modelItem => item.TrainingPayment.TrainingPaymentDescription)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CourseID)
+            @Html.DisplayFor(modelItem => item.Course.CourseCode)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TrainingID }) |
+            @Html.ActionLink("Update", "Update", new { id=item.TrainingID }) |
             @Html.ActionLink("Details", "Details", new { id=item.TrainingID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.TrainingID })
         </td>
