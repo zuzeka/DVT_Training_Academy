@@ -62,6 +62,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DelegateTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +70,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TrainingAcademy.BL\TrainingAcademy.BL.csproj">
+      <Project>{DA35A768-07E8-4F9B-9E60-D2618A36E81D}</Project>
+      <Name>TrainingAcademy.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TrainingAcademy.DAL\TrainingAcademy.DAL.csproj">
+      <Project>{f518b53a-5aca-496c-a055-2f8a8a3220a2}</Project>
+      <Name>TrainingAcademy.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TrainingAcademy.UI\TrainingAcademy.UI.csproj">
       <Project>{FEC2F2AC-BE85-423F-8845-07A0D637B901}</Project>
       <Name>TrainingAcademy.UI</Name>

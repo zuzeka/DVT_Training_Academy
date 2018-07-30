@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="46050db36c1344b9bf490ef7801bb87f" Name="Diagram1">
+      <Diagram DiagramId="448cb182bd7a4e198c2961d24ed1c65f" Name="Diagram1">
         <EntityTypeShape EntityType="DVTModel.AddressDetail" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DVTModel.Addresss" Width="1.5" PointX="1.5" PointY="15.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DVTModel.AddressType" Width="1.5" PointX="1.5" PointY="19.75" IsExpanded="true" />

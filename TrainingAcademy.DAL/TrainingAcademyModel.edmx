@@ -565,7 +565,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DVTEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DVTEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AddressDetails" EntityType="Self.AddressDetail" />
           <EntitySet Name="Addressses" EntityType="Self.Addresss" />
           <EntitySet Name="AddressTypes" EntityType="Self.AddressType" />
@@ -627,7 +627,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DVTModelStoreContainer" CdmEntityContainer="DVTEntities">
+        <EntityContainerMapping StorageEntityContainer="DVTModelStoreContainer" CdmEntityContainer="DVTEntities1">
           <EntitySetMapping Name="AddressDetails">
             <EntityTypeMapping TypeName="DVTModel.AddressDetail">
               <MappingFragment StoreEntitySet="AddressDetail">

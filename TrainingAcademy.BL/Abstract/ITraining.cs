@@ -14,5 +14,11 @@ namespace TrainingAcademy.BL.Abstract
         void Delete(int id);
         void Update(DAL.Training training);
         DAL.Training getById(int id);
+        List<DAL.Course> GetCourse();
+        List<DAL.TrainingPayment> GetPaymentDesc();
+        int CurrentCourseID(int id);
+        int CurrentTrainingPaymentID(int id);
+        int UpdateCourseID(DAL.Training training);
+        int UpdateTrainingPaymentID(DAL.Training training);
     }
 }
