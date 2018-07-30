@@ -50,7 +50,7 @@
     <Compile Include="Abstract\ICourse.cs" />
     <Compile Include="Abstract\IDelegate.cs" />
     <Compile Include="Abstract\IRegister.cs" />
-    <Compile Include="Concrete\ConcreteCourse.cs" />
+    <Compile Include="Concrete\Course.cs" />
     <Compile Include="Concrete\Delegate.cs" />
     <Compile Include="Concrete\Register.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

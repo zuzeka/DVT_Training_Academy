@@ -8,11 +8,14 @@ namespace TrainingAcademy.BL.Abstract
 {
     public interface ITraining
     {
+        //GetAllTraining
         IEnumerable<DAL.Training> GetAll();
         void Save();
+        //CreateTraining / AddTraining
         void Insert(DAL.Training training);
         void Delete(int id);
         void Update(DAL.Training training);
+        //GetTraining(Id)
         DAL.Training getById(int id);
         List<DAL.Course> GetCourse();
         List<DAL.TrainingPayment> GetPaymentDesc();

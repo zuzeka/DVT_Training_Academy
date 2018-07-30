@@ -22,6 +22,10 @@ namespace TrainingAcademy.UI.Controllers
         // GET: Courses
         public ActionResult Index()
         {
+            // Call Web-API         
+            // deserialize response 
+            
+
             return View(_ICourse.GetCourses());
         }
 
@@ -33,7 +37,7 @@ namespace TrainingAcademy.UI.Controllers
 
         // POST: Courses/Create
         [HttpPost]
-        public ActionResult Create(Course course)
+        public ActionResult Create(DAL.Course course)
         {
 
             if (ModelState.IsValid)
@@ -50,21 +54,17 @@ namespace TrainingAcademy.UI.Controllers
         // GET: Courses/Edit/5
         public ActionResult Edit(int id)
         {
-            if (id == null)
+            if (id > 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Course course = _ICourse.GetCoursebyid(id);
-            if (course == null)
-            {
-                return HttpNotFound();
-            }
+            DAL.Course course = _ICourse.GetCoursebyid(id);
             return View(course);
         }
 
         // POST: Courses/Edit/5
         [HttpPost]
-        public ActionResult Edit(Course course)
+        public ActionResult Edit(DAL.Course course)
         {
             if(ModelState.IsValid)
             {
@@ -82,11 +82,8 @@ namespace TrainingAcademy.UI.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Course course = _ICourse.GetCoursebyid(id);
-            if (course == null)
-            {
-                return HttpNotFound();
-            }
+            DAL.Course course = _ICourse.GetCoursebyid(id);
+           
             return View(course);
         }
 

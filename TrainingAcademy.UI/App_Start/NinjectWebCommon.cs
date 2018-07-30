@@ -49,7 +49,7 @@ namespace TrainingAcademy.UI.App_Start
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
                 //bind ICourse with contrete class
-                kernel.Bind<ICourse>().To<ConcreteCourse>();
+                kernel.Bind<ICourse>().To<BL.Concrete.Course>();
             
 
 
