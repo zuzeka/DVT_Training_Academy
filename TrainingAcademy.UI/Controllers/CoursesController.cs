@@ -1,33 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TrainingAcademy.BL.Abstract;
+using TrainingAcademy.BL.Concrete;
+using TrainingAcademy.DAL;
 
 namespace TrainingAcademy.UI.Controllers
 {
     public class CoursesController : Controller
     {
         ICourse _ICourse;
-        
+
         public CoursesController(ICourse _iCourse)
         {
-            //inject implement dependecy Injection here.
             _ICourse = _iCourse;
-
         }
 
         // GET: Courses
         public ActionResult Index()
         {
             return View(_ICourse.GetCourses());
-        }
-
-        // GET: Courses/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
         }
 
         // GET: Courses/Create
@@ -38,62 +33,70 @@ namespace TrainingAcademy.UI.Controllers
 
         // POST: Courses/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Course course)
         {
-            try
-            {
-                // TODO: Add insert logic here
 
+            if (ModelState.IsValid)
+            {
+                _ICourse.AddOrUpdateCourse(course);
+                _ICourse.Commit();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(course);
         }
+
 
         // GET: Courses/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Course course = _ICourse.GetCoursebyid(id);
+            if (course == null)
+            {
+                return HttpNotFound();
+            }
+            return View(course);
         }
 
         // POST: Courses/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Course course)
         {
-            try
+            if(ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
+                _ICourse.AddOrUpdateCourse(course);
+                _ICourse.Commit();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
 
         // GET: Courses/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Course course = _ICourse.GetCoursebyid(id);
+            if (course == null)
+            {
+                return HttpNotFound();
+            }
+            return View(course);
         }
 
         // POST: Courses/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            _ICourse.RemoveCourse(id);
+            _ICourse.Commit();
+            return RedirectToAction("Index");
         }
     }
 }

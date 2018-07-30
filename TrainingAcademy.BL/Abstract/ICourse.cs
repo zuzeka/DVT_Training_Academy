@@ -9,11 +9,11 @@ namespace TrainingAcademy.BL.Abstract
 {
     public interface ICourse
     {
-        void AddCourse(Course entity );
+        void AddOrUpdateCourse(Course course );
         IEnumerable<Course> GetCourses();
-        Course GetCoursebyid(int id);
+        Course GetCoursebyid(int? id);
         void RemoveCourse(int id);
-        Course EditCourse(int id);
-        void Comit();
+        //void EditCourse(Course course);
+        void Commit();
     }
 }
