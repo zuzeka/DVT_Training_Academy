@@ -1,31 +1,20 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TrainingAcademy.DAL;
+
+
 
 namespace TrainingAcademy.Tests
 {
     [TestClass]
     public class DelegateTest
     {
-        DVTEntities db = new DVTEntities();
+        BL.Concrete.Delegate @delegate = new BL.Concrete.Delegate();
+
         [TestMethod]
-        public void AddDelegate()
+        public void ListDelegate()
         {
-            DAL.Delegate @delegate = new DAL.Delegate
-            {
-                AddressDetailID = 1,
-                CompanyName ="DVT",
-                DietaryID = 1,
-                Email = "b@dvt.com",
-                FirstName = "Bonginkosi",
-                LastName = "Mahlangu",
-                PhoneNumber = 123456789,
-                
-            };
+            int count = @delegate.ListDelegate().Count;
+
+            Assert.AreNotEqual(0, count);
         }
     }
 }
