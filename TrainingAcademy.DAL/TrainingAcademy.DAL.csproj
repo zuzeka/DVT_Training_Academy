@@ -106,7 +106,9 @@
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="TrainingAcademyModel.edmx.diagram">
       <DependentUpon>TrainingAcademyModel.edmx</DependentUpon>

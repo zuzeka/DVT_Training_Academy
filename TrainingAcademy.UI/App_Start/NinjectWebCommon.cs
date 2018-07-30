@@ -48,6 +48,12 @@ namespace TrainingAcademy.UI.App_Start
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
+                //bind ICourse with contrete class
+                kernel.Bind<ICourse>().To<CourseRepository>();
+            
+
+
+
                 RegisterServices(kernel);
                 return kernel;
             }

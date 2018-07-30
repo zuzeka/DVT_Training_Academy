@@ -138,6 +138,7 @@
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\TrainingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -152,6 +153,7 @@
     <Content Include="Views\Training\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Training\Create.cshtml" />
+    <Content Include="Views\Courses\Index.cshtml" />
     <Content Include="Views\Training\Delete.cshtml" />
     <Content Include="Views\Training\Update.cshtml" />
     <Content Include="Views\Training\Details.cshtml" />
