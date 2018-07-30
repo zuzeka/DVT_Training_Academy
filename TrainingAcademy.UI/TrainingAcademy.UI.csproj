@@ -150,13 +150,15 @@
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Training\Index.cshtml" />
+    <Content Include="Views\Delegate\Create.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Training\Create.cshtml" />
-    <Content Include="Views\Courses\Index.cshtml" />
-    <Content Include="Views\Training\Delete.cshtml" />
-    <Content Include="Views\Training\Update.cshtml" />
-    <Content Include="Views\Training\Details.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Delegate\Index.cshtml" />
+    <Content Include="Views\Delegate\Edit.cshtml" />
+    <Content Include="Views\Delegate\Delete.cshtml" />
+    <Content Include="Views\Register\Index.cshtml" />
+    <Content Include="Views\Register\Edit.cshtml" />
+    <Content Include="Views\Register\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -167,6 +169,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TrainingAcademy.BL\TrainingAcademy.BL.csproj">
