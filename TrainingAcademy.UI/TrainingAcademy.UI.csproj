@@ -161,6 +161,15 @@
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\Register\Edit.cshtml" />
     <Content Include="Views\Register\Delete.cshtml" />
+    <Content Include="Views\Course\Create.cshtml" />
+    <Content Include="Views\Course\Edit.cshtml" />
+    <Content Include="Views\Course\Index.cshtml" />
+    <Content Include="Views\Courses\Index.cshtml" />
+    <Content Include="Views\Training\Create.cshtml" />
+    <Content Include="Views\Training\Delete.cshtml" />
+    <Content Include="Views\Training\Details.cshtml" />
+    <Content Include="Views\Training\Index.cshtml" />
+    <Content Include="Views\Training\Update.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
