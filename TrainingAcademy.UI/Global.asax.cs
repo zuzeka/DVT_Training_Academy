@@ -13,6 +13,8 @@ namespace TrainingAcademy.UI
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            
         }
+        
     }
 }

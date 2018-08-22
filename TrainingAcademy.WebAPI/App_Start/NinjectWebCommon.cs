@@ -1,7 +1,7 @@
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(TrainingAcademy.UI.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(TrainingAcademy.UI.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(TrainingAcademy.WebAPI.App_Start.NinjectWebCommon), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(TrainingAcademy.WebAPI.App_Start.NinjectWebCommon), "Stop")]
 
-namespace TrainingAcademy.UI.App_Start
+namespace TrainingAcademy.WebAPI.App_Start
 {
     using System;
     using System.Web;
@@ -11,8 +11,6 @@ namespace TrainingAcademy.UI.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using TrainingAcademy.BL.Abstract;
-    using TrainingAcademy.BL.Concrete;
-    using TrainingAcademy.DAL;
 
     public static class NinjectWebCommon 
     {
@@ -43,16 +41,13 @@ namespace TrainingAcademy.UI.App_Start
         private static IKernel CreateKernel()
         {
             var kernel = new StandardKernel();
+
+            System.Web.Http.GlobalConfiguration.Configuration.DependencyResolver = new Ninject.WebApi.DependencyResolver.NinjectDependencyResolver(kernel);
+
             try
             {
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
-
-                //bind ICourse with contrete class
-                kernel.Bind<ICourse>().To<BL.Concrete.Course>();
-            
-
-
 
                 RegisterServices(kernel);
                 return kernel;
@@ -72,7 +67,7 @@ namespace TrainingAcademy.UI.App_Start
         {
             kernel.Bind<IDelegate>().To<BL.Concrete.Delegate>();
             kernel.Bind<IRegister>().To<BL.Concrete.Register>();
-            kernel.Bind<ITraining>().To<BL.Concrete.Training>();
+            kernel.Bind<ICourse>().To<BL.Concrete.Course>();
         }        
     }
 }

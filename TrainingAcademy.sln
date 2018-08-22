@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingAcademy.BL", "Train
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingAcademy.DAL", "TrainingAcademy.DAL\TrainingAcademy.DAL.csproj", "{F518B53A-5ACA-496C-A055-2F8A8A3220A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingAcademy.WebAPI", "TrainingAcademy.WebAPI\TrainingAcademy.WebAPI.csproj", "{FA19B694-E6EF-4F12-8EC2-B9901BAB9C6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingAcademy.ConsumeAPI", "TrainingAcademy.ConsumeAPI\TrainingAcademy.ConsumeAPI.csproj", "{0FA94DD4-9C1A-4599-8D55-545B63D03E4C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{F518B53A-5ACA-496C-A055-2F8A8A3220A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F518B53A-5ACA-496C-A055-2F8A8A3220A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F518B53A-5ACA-496C-A055-2F8A8A3220A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA19B694-E6EF-4F12-8EC2-B9901BAB9C6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA19B694-E6EF-4F12-8EC2-B9901BAB9C6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA19B694-E6EF-4F12-8EC2-B9901BAB9C6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA19B694-E6EF-4F12-8EC2-B9901BAB9C6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FA94DD4-9C1A-4599-8D55-545B63D03E4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FA94DD4-9C1A-4599-8D55-545B63D03E4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FA94DD4-9C1A-4599-8D55-545B63D03E4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FA94DD4-9C1A-4599-8D55-545B63D03E4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

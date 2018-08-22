@@ -30,7 +30,6 @@ namespace TrainingAcademy.BL.Concrete
             }
             else
             {
-                //exisitng entity update
                 _context.Entry(course).State = EntityState.Modified;
             }
         }
